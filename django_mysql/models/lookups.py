@@ -44,7 +44,7 @@ class Soundex(Transform):
 
 class JSONValue(object):
     def __init__(self, value):
-        self.sql = value if isinstance(value, str) else 'CAST(%s AS JSON)', [json.dumps(value)]
+        self.sql = value if isinstance(value, basestring) else 'CAST(%s AS JSON)', [json.dumps(value)]
 
     def as_sql(self, *args, **kwargs):
         return self.sql
