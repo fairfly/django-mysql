@@ -44,10 +44,10 @@ class Soundex(Transform):
 
 class JSONValue(object):
     def __init__(self, value):
-        self.json_string = json.dumps(value)
+        self.sql = value if isinstance(value, str) else 'CAST(%s AS JSON)', [json.dumps(value)]
 
     def as_sql(self, *args, **kwargs):
-        return 'CAST(%s AS JSON)', [self.json_string]
+        return self.sql
 
 
 class JSONLookupMixin(object):
