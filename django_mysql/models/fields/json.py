@@ -107,7 +107,7 @@ class JSONField(Field):
     def get_lookup(self, lookup_name):
         # Have to 'unregister' some incompatible lookups
         if lookup_name in {
-            'range', 'in', 'iexact', 'icontains', 'startswith',
+            'range', 'iexact', 'icontains', 'startswith',
             'istartswith', 'endswith', 'iendswith', 'search', 'regex', 'iregex'
         }:
             raise NotImplementedError(
